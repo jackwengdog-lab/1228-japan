@@ -30,15 +30,27 @@
     </main>
   </div>
 
-  <!-- 🚀 匯出按鈕 - 底部固定 -->
-  <footer class="app-footer">
-    <button id="export-btn" class="export-btn" title="匯出行程為 JSON 檔案">
-      💾 匯出行程
-    </button>
-  <button id="import-btn" class="import-btn" title="匯入 JSON 行程檔案">
-    📁 匯入行程
+<!-- 🚀 小巧工具列（六顆橫排） -->
+<div class="toolbox">
+  <button id="export-btn" class="tool-btn export-btn" title="匯出行程">
+    💾 匯出
   </button>
-  </footer>
+  <button id="import-btn" class="tool-btn import-btn" title="匯入行程">
+    📁 匯入
+  </button>
+  <button id="reset-btn" class="tool-btn reset-btn" title="重置預設">
+    🔄 重置
+  </button>
+  <!-- 🚀 新增：花費 CSV 按鈕 -->
+  <button id="expenses-export-btn" class="tool-btn expenses-export-btn" title="匯出花費 CSV">
+    📊 費出
+  </button>
+  <button id="expenses-import-btn" class="tool-btn expenses-import-btn" title="匯入花費 CSV">
+    📥 費入
+  </button>
+</div>
+
+
 
   <!-- 一定要放在 day-list / day-detail 之後 -->
   <script src="app.js"></script>
