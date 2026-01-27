@@ -675,3 +675,59 @@ body::before {
 .time-hint { font-size: 11px; color: #666; margin-top: 2px; }
 input[pattern*="\d{4}"] { width: 120px; font-family: monospace; text-align: center; }
 
+
+.day-header-editor {
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f7f9ff, #ffffff);
+  border: 1px solid rgba(197, 214, 242, 0.8);
+}
+
+.day-header-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px 16px;
+  font-size: 12px;
+}
+
+.day-header-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.day-header-row.full-width {
+  grid-column: 1 / -1;
+}
+
+.day-header-row label {
+  color: #1565c0;
+  font-weight: 600;
+}
+
+.day-header-row input {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #c5d6f2;
+  font-size: 13px;
+}
+
+.day-header-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.day-header-save-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
