@@ -838,6 +838,32 @@ const typeOptionsHtml = ITINERARY_FIELDS.types
       <div class="day-detail-meta">${day.date}（${day.weekday}）｜${day.summary}</div>
     </div>
 
+    <!-- 🚀 新增：Day 表頭編輯表單 -->
+    <div class="day-header-editor">
+      <form id="day-header-form" class="day-header-form">
+        <div class="day-header-row">
+          <label for="day-header-date">日期：</label>
+          <input type="date" id="day-header-date" value="${day.date}" />
+        </div>
+        <div class="day-header-row">
+          <label for="day-header-weekday">星期：</label>
+          <input type="text" id="day-header-weekday" value="${day.weekday}" placeholder="Mon, Tue, 三, 四..." />
+        </div>
+        <div class="day-header-row">
+          <label for="day-header-city">城市：</label>
+          <input type="text" id="day-header-city" value="${day.city}" />
+        </div>
+        <div class="day-header-row full-width">
+          <label for="day-header-summary">摘要：</label>
+          <input type="text" id="day-header-summary" value="${day.summary}" />
+        </div>
+        <div class="day-header-actions">
+          <button type="submit" class="day-header-save-btn">✅ 更新表頭</button>
+        </div>
+      </form>
+    </div>
+
+
     <!-- 🚀 新增：行程編輯表單 -->
     <div class="section-editor-panel">
       <h3 class="panel-title">✏️ 當日行程編輯 <span class="current-day-info">Day ${day.dayNumber} | ${day.date}</span></h3>
@@ -976,6 +1002,35 @@ const typeOptionsHtml = ITINERARY_FIELDS.types
       </div>
     </div>
   `;
+
+
+  // 🚀 Day 表頭編輯事件
+  const dayHeaderForm = document.getElementById("day-header-form");
+  const dayHeaderDateInput = document.getElementById("day-header-date");
+  const dayHeaderWeekdayInput = document.getElementById("day-header-weekday");
+  const dayHeaderCityInput = document.getElementById("day-header-city");
+  const dayHeaderSummaryInput = document.getElementById("day-header-summary");
+
+  if (dayHeaderForm) {
+    dayHeaderForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const newDate = dayHeaderDateInput.value.trim() || day.date;
+      const newWeekday = dayHeaderWeekdayInput.value.trim() || day.weekday;
+      const newCity = dayHeaderCityInput.value.trim() || day.city;
+      const newSummary = dayHeaderSummaryInput.value.trim() || day.summary;
+
+      // 寫回目前這一天的表頭資料
+      day.date = newDate;
+      day.weekday = newWeekday;
+      day.city = newCity;
+      day.summary = newSummary;
+
+      // 重新畫左邊 Day 卡片 + 右邊內容
+      renderDayList();
+      renderDayDetail();
+    });
+  }
 
   // ==== 🚀 行程編輯表單事件處理（A. 新增） ====
   const sectionForm = document.getElementById("section-form");
